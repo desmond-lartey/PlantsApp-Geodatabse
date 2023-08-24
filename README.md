@@ -9,7 +9,7 @@
     <h2>Overview:</h2>
     <p>The provided SQL queries aim to analyze various aspects of climate, adaptation strategies, budgeting, and dominant species across different countries. The database contains multiple tables, each capturing specific details about climate trends, vulnerabilities, budgeting for adaptation, and more. The following documentation provides an in-depth understanding of the relationships between these tables and the rationale behind joining certain tables to answer specific questions.</p>
 
-<h2>Tables and Relationships:</h2>
+<h2>1. Tables and Relationship:</h2>
         <li><strong>budget:</strong> Contains data about countries, their climate vulnerabilities, urban greening initiatives, and estimated budgets for adaptation.</li>
         <li><strong>adaptation:</strong> Holds information about countries, their climate vulnerabilities, adaptation strategies, and recommended ornamental plant species.</li>
         <li><strong>climate:</strong> Captures the current climate state and trend for different countries.</li>
