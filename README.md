@@ -78,9 +78,6 @@
     <p>Other queries primarily use individual tables without joins, as the tables are structured to provide comprehensive data for specific analyses.</p>
 
 <h2>Relationships:</h2>
-    <li>The primary key for linking most tables is the Country column. This column is present in almost all tables, making it the primary attribute for joining tables.<li>
-    <li>The spatial relationship between the world and dominantspecies2 tables is based on the geometry of countries and the distribution of dominant species.<li>
-
 <li><strong>Key:</strong> The primary key for linking most tables is the Country column. This column is present in almost all tables, making it the primary attribute for joining tables.</li>
         <li><strong>Relation:</strong> HThe spatial relationship between the world and dominantspecies2 tables is based on the geometry of countries and the distribution of dominant species.</li>
 
