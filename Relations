@@ -1,4 +1,5 @@
----We will create 7 relations/tables from the climate analysis. Note that 2 more geographcial tables have been added. The PostGIS extension in QGIS made this easy and possible with a bunch of code
+---We will create 7 relations/tables from the climate analysis. Note that 2 more geographical tables have been added. The PostGIS extension in QGIS made this easy and possible with a bunch of code
+
 CREATE TABLE budget (
     Country VARCHAR(255),
     Climate_Vulnerabilities TEXT,
