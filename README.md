@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Comprehensive Documentation</title>
-</head>
-
 <body>
     <img src="https://www.rfwireless-world.com/images/Geodatabase-life-cycle.jpg" alt="Cover Image">
 
