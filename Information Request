@@ -1,0 +1,294 @@
+--1. Budget Analysis:
+--a. Which countries have the highest and lowest estimated budgets for adaptation?
+-- Highest budget
+SELECT Country, Estimated_Budget
+FROM budget
+ORDER BY Estimated_Budget DESC
+LIMIT 15;
+
+-- Lowest budget
+SELECT Country, Estimated_Budget
+FROM budget
+ORDER BY Estimated_Budget ASC
+LIMIT 1;
+
+---b. What are the main climate vulnerabilities for 
+--the countries with the top 5 highest budgets?
+
+SELECT Country, Climate_Vulnerabilities, Estimated_Budget
+FROM budget
+ORDER BY Estimated_Budget DESC
+LIMIT 5;
+
+---2. Adaptation Strategies:
+--a. Which plant species are the most commonly recommended across countries?
+--(This is a bit complex as the plant species are distributed across multiple columns. 
+--However, for simplicity, we can start by checking the first column: OrnamentalPlantSpecies.)
+
+SELECT OrnamentalPlantSpecies, COUNT(*) AS Country_Count
+FROM adaptation
+GROUP BY OrnamentalPlantSpecies
+ORDER BY Country_Count DESC
+LIMIT 5;
+
+--a. For the plant species columns, we'll aggregate the counts and list the countries for each species:
+
+WITH AllSpecies AS (
+    SELECT Country, OrnamentalPlantSpecies AS Species FROM adaptation
+    UNION ALL
+    SELECT Country, OrnamentalPlantSpecies2 FROM adaptation
+    UNION ALL
+    SELECT Country, OrnamentalPlantSpecies3 FROM adaptation
+    UNION ALL
+    SELECT Country, OrnamentalPlantSpecies4 FROM adaptation
+)
+, SpeciesAggregation AS (
+    SELECT Species, COUNT(*) AS Country_Count,
+           STRING_AGG(Country, ', ') AS Countries
+    FROM AllSpecies
+    WHERE Species IS NOT NULL
+    GROUP BY Species
+    ORDER BY Country_Count DESC
+    LIMIT 5
+)
+SELECT * FROM SpeciesAggregation;
+
+--b. For countries with specific vulnerabilities (e.g., "Water scarcity"), what adaptation strategies are most common?
+
+SELECT strategies
+FROM adaptation
+WHERE ClimateVulnerabilities iLIKE '%Water scarcity%'
+GROUP BY strategies
+ORDER BY COUNT(*) DESC
+LIMIT 5;
+
+--b. To list countries with specific vulnerabilities (e.g., "Water scarcity") and their adaptation strategies:
+
+SELECT Country, strategies
+FROM adaptation
+WHERE ClimateVulnerabilities iLIKE '%Water scarcity%'
+GROUP BY Country, strategies
+ORDER BY COUNT(*) DESC;
+
+--3. Climate Trends:
+--a. How many countries are experiencing a warming trend vs. a cooling trend?
+
+-- Warming trend
+SELECT COUNT(*) 
+FROM climate
+WHERE "Climate Trend" iLIKE '%Warming%';
+
+-- Cooling trend
+SELECT COUNT(*) 
+FROM climate
+WHERE "Climate Trend" iLIKE '%cooling%';
+
+--a. List countries experiencing a warming trend:
+
+SELECT Country, "Climate Trend"
+FROM climate
+WHERE "Climate Trend" iLIKE '%Warming%';
+
+--b. List countries experiencing a cooling trend:
+
+SELECT Country, "Climate Trend"
+FROM climate
+WHERE "Climate Trend" iLIKE '%cooling%';
+
+--b. Which countries have the most severe climate states currently?
+--(Note: The definition of "rainfall" needs clarity. However, for the sake of demonstration, let's assume we're looking for the word "rainfall" in the "Current Climate State" column.)
+
+SELECT Country, "Current Climate State"
+FROM climate
+WHERE "Current Climate State" LIKE '%rainfall%';
+
+
+--4. Climate Classification:
+--a. Which countries fall into specific winter hardiness zones?
+
+SELECT "Winter Hardiness Zone", STRING_AGG(Country, ', ') AS Countries
+FROM climateclassification
+GROUP BY "Winter Hardiness Zone"
+ORDER BY "Winter Hardiness Zone";
+
+--b. What are the most common plant species recommended for each climate classification?
+--(Note: This will focus on the Suitable Plant Species column for simplicity.)
+
+SELECT Classification, "Suitable Plant Species", COUNT(*) AS Country_Count
+FROM climateclassification
+WHERE "Suitable Plant Species" IS NOT NULL
+GROUP BY Classification, "Suitable Plant Species"
+ORDER BY Classification, Country_Count DESC;
+
+--5. Climate Projections:
+--a. Which countries are projected to experience the most drastic changes in the next 30 years?
+--(Note: The definition of "drastic" needs clarity. For the sake of demonstration, let's look for countries with the word "warming" in the 30-Year Projection column.)
+
+SELECT Country, "30-Year Projection"
+FROM climateprojections
+WHERE "30-Year Projection" LIKE '%warming%';
+
+--b. Are there any trends in the 5-year, 10-year, and 30-year projections?
+
+-- Trends in 5-year projection
+SELECT "5-Year Projection", COUNT(*) AS Country_Count
+FROM climateprojections
+GROUP BY "5-Year Projection"
+ORDER BY Country_Count DESC;
+
+-- Trends in 10-year projection
+SELECT "10-Year Projection", COUNT(*) AS Country_Count
+FROM climateprojections
+GROUP BY "10-Year Projection"
+ORDER BY Country_Count DESC;
+
+-- Trends in 30-year projection
+SELECT "30-Year Projection", COUNT(*) AS Country_Count
+FROM climateprojections
+GROUP BY "30-Year Projection"
+ORDER BY Country_Count DESC;
+
+--6. Dominant species Analysis:
+--What are the dominant species in each country and how many spaces they occupy?
+--(Note: This requires a join between the woorld and dominantspecies2 tables. The dominantspecies2 table has a gridcode column and a species column.)
+CREATE INDEX idx_world_geom ON world USING gist(geom);
+WITH BufferedGeometries AS (
+    SELECT gridcode, species, ST_Buffer(geom, 0.0001) AS buffered_geom
+    FROM dominantspecies2
+)
+SELECT 
+    w."Country",
+    ds2.gridcode,
+    ds2.species AS DominantSpecies,
+    ST_Area(ST_Transform(ST_Intersection(ds2.buffered_geom, w.geom), 3035)) / 10000 AS IntersectionAreaInHectares
+FROM world w
+JOIN BufferedGeometries ds2 ON ST_Intersects(ds2.buffered_geom, w.geom)
+WHERE w."Country" IN ('Latvia')  -- You can remove this line if you want results for all countries
+ORDER BY w."Country", IntersectionAreaInHectares DESC;
+
+--7. Vulnerabilities:
+--a. Which countries are projected to have the most significant vulnerabilities in the future?
+--(Note: Let's look for countries with the word "increased" in the futurevulnerabilities column.)
+
+SELECT Country, futurevulnerabilities
+FROM vulnerabilities
+WHERE futurevulnerabilities ILIKE '%increased%';
+
+--b. What are the recommended plant species for countries with high risk future vulnerabilities?
+
+SELECT Country, recommendedplantspecies
+FROM vulnerabilities
+WHERE futurevulnerabilities iLIKE '%risk%';
+
+--NEXT SET OF QUESTIONS
+---Budget vs. Vulnerabilities Analysis:
+--a. Which countries have a high budget but also high future vulnerabilities?
+
+SELECT b.Country, b.Estimated_Budget, v.futurevulnerabilities
+FROM budget b
+JOIN vulnerabilities v ON b.Country = v.Country
+WHERE b.Estimated_Budget > (SELECT AVG(Estimated_Budget) FROM budget) 
+AND v.futurevulnerabilities ILIKE '%increased%'
+ORDER BY b.Estimated_Budget DESC;
+
+--2. Climate Zone vs. Adaptation Strategies:
+--a. What are the common adaptation strategies for countries in a specific climate zone?
+
+SELECT cz.zone, a.strategies, COUNT(a.Country) AS Country_Count
+FROM climatezone cz
+JOIN adaptation a ON cz.Country = a.Country
+GROUP BY cz.zone, a.strategies
+ORDER BY Country_Count DESC;
+
+--3. Climate Projections vs. Budget:
+--a. Which countries have a warming trend in the next 30 years but a low adaptation budget?
+
+SELECT cp.Country, cp."30-Year Projection", b.Estimated_Budget
+FROM climateprojections cp
+JOIN budget b ON cp.Country = b.Country
+WHERE cp."30-Year Projection" ILIKE '%warming%'
+AND b.Estimated_Budget < (SELECT AVG(Estimated_Budget) FROM budget)
+ORDER BY b.Estimated_Budget ASC;
+
+--4. Dominant Species vs. Climate Classification:
+--a. Which dominant species are found in countries with a specific winter hardiness zone?
+
+WITH DominantCountries AS (
+    SELECT w."Country", ds2.species
+    FROM world w
+    JOIN dominantspecies2 ds2 ON ST_Intersects(ds2.geom, w.geom)
+)
+SELECT 
+    cc."Winter Hardiness Zone", 
+    dc.species, 
+    COUNT(dc."Country") AS Country_Count,
+    STRING_AGG(dc."Country", ', ') AS Countries_List
+FROM climateclassification cc
+JOIN DominantCountries dc ON cc."country" = dc."Country"
+GROUP BY cc."Winter Hardiness Zone", dc.species
+ORDER BY Country_Count DESC;
+
+
+
+
+--5. Adaptation Strategies Diversity:
+--a. Which countries have the most diverse set of recommended ornamental plant species?
+
+WITH SpeciesDiversity AS (
+    SELECT Country, 
+           COUNT(DISTINCT OrnamentalPlantSpecies) + 
+           COUNT(DISTINCT OrnamentalPlantSpecies2) + 
+           COUNT(DISTINCT OrnamentalPlantSpecies3) + 
+           COUNT(DISTINCT OrnamentalPlantSpecies4) AS Diversity_Count
+    FROM adaptation
+    GROUP BY Country
+)
+SELECT Country, Diversity_Count
+FROM SpeciesDiversity
+ORDER BY Diversity_Count DESC
+LIMIT 5;
+
+--3RD SET OF QUESTIONS
+
+
+--5. Climate Classification:
+--e. Which countries have the coldest average temperatures based on their winter hardiness zones?
+
+WITH ParsedTemperatures AS (
+    SELECT 
+        Country,
+        SPLIT_PART(Temperature, ' to ', 1)::float AS TempMin,
+        SPLIT_PART(Temperature, ' to ', 2)::float AS TempMax
+    FROM climateclassification
+)
+SELECT 
+    Country, 
+    AVG((TempMin + TempMax) / 2) AS AvgTemperature
+FROM ParsedTemperatures
+GROUP BY Country
+ORDER BY AvgTemperature ASC
+LIMIT 20;
+
+
+--6. Adaptation Strategies:
+--f. Which countries have the most diverse set of adaptation strategies?
+
+SELECT Country, ARRAY_LENGTH(string_to_array(strategies, ','), 1) AS NumberOfStrategies
+FROM adaptation
+ORDER BY NumberOfStrategies DESC
+LIMIT 5;
+
+--7. Dominant Species Analysis:
+--g. In which countries are the dominant species most diverse?
+
+WITH SpeciesCountries AS (
+    SELECT w."Country",
+           ARRAY_AGG(DISTINCT ds2.species) AS SpeciesList
+    FROM world w
+    LEFT JOIN dominantspecies2 ds2 ON ST_Intersects(ds2.geom, w.geom)
+    GROUP BY w."Country"
+)
+SELECT "Country", ARRAY_LENGTH(SpeciesList, 1) AS SpeciesCount, SpeciesList
+FROM SpeciesCountries
+ORDER BY SpeciesCount DESC
+LIMIT 5;
