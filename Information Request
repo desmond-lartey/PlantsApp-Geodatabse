@@ -1,6 +1,7 @@
 --1. Budget Analysis:
 --a. Which countries have the highest and lowest estimated budgets for adaptation?
 -- Highest budget
+
 SELECT Country, Estimated_Budget
 FROM budget
 ORDER BY Estimated_Budget DESC
@@ -228,9 +229,6 @@ JOIN DominantCountries dc ON cc."country" = dc."Country"
 GROUP BY cc."Winter Hardiness Zone", dc.species
 ORDER BY Country_Count DESC;
 
-
-
-
 --5. Adaptation Strategies Diversity:
 --a. Which countries have the most diverse set of recommended ornamental plant species?
 
@@ -249,7 +247,6 @@ ORDER BY Diversity_Count DESC
 LIMIT 5;
 
 --3RD SET OF QUESTIONS
-
 
 --5. Climate Classification:
 --e. Which countries have the coldest average temperatures based on their winter hardiness zones?
