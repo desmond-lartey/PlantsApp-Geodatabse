@@ -4,9 +4,9 @@
 <body>
     <img src="https://www.rfwireless-world.com/images/Geodatabase-life-cycle.jpg" alt="Cover Image">
 
-    <h1>Comprehensive Documentation</h1>
+<h1>Documentation</h1>
 
-    <h2>Overview:</h2>
+<h2>Overview:</h2>
     <p>The provided SQL queries aim to analyze various aspects of climate, adaptation strategies, budgeting, and dominant species across different countries. The database contains multiple tables, each capturing specific details about climate trends, vulnerabilities, budgeting for adaptation, and more. The following documentation provides an in-depth understanding of the relationships between these tables and the rationale behind joining certain tables to answer specific questions.</p>
 
 <h2>1. Tables and Relationship:</h2>
