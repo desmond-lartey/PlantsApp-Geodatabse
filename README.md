@@ -23,8 +23,8 @@
 <h2>Analysis:</h2>
 
 <h3>1. Budget Analysis:</h3>
-    <li><strong>Objective:</strong> Determine countries with the highest and lowest estimated budgets for adaptation and identify the main climate vulnerabilities for countries with the top 5 highest budgets.</li>
-    </li><strong>Relationships:</strong> The budget table is self-sufficient for this analysis.</li>
+    <p><strong>Objective:</strong> Determine countries with the highest and lowest estimated budgets for adaptation and identify the main climate vulnerabilities for countries with the top 5 highest budgets.</p>
+     <p><strong>Objective:</strong> The budget table is self-sufficient for this analysis.</p>
 
     <h4>a. Highest and Lowest Estimated Budgets:</h4>
     <p>The budget table is queried to determine countries with the highest and lowest estimated budgets for adaptation.</p>
