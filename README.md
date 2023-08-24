@@ -91,6 +91,8 @@
 
 <h2>Conclusion:</h2>
     <p>The database provides a holistic view of climate trends, vulnerabilities, adaptation strategies, and budgeting across countries. By analyzing this data, stakeholders can make informed decisions about climate adaptation, budget allocation, and strategies to combat future vulnerabilities. The relationships between tables, especially the spatial relationship, offer a deeper understanding of the distribution of species and the impact of climate on various countries.</p>
+
+<p>Visit this website if you want to know more about the functional and ornamental qualities for over 3000 plant species, <a href="https://plantsapp-ajjdvywmagmqbsty4f2r9c.streamlit.app/">visit PlantsApp</a>.</p>
 </body>
 
 </html>
