@@ -24,7 +24,7 @@
 
     <h2>Analysis:</h2>
 
-    <h3>1. Budget Analysis:</h3>
+<h3>1. Budget Analysis:</h3>
     <p><strong>Objective:</strong> Determine countries with the highest and lowest estimated budgets for adaptation and identify the main climate vulnerabilities for countries with the top 5 highest budgets.</p>
     <p><strong>Relationships:</strong> The budget table is self-sufficient for this analysis.</p>
 
@@ -35,7 +35,7 @@
     <h4>b. Main Climate Vulnerabilities for Top 5 Budgets:</h4>
     <p>The budget table is again used to list the main climate vulnerabilities for countries with the top 5 highest estimated budgets.</p>
 
-    <h3>2. Adaptation Strategies:</h3>
+<h3>2. Adaptation Strategies:</h3>
     <p><strong>Objective:</strong> Identify the most commonly recommended plant species across countries and the adaptation strategies for countries with specific vulnerabilities.</p>
     <p><strong>Relationships:</strong> The adaptation table is used for this analysis. Multiple columns within the table are aggregated to determine the most common plant species.</p>
 
@@ -46,18 +46,18 @@
     <h4>b. Adaptation Strategies for Specific Vulnerabilities:</h4>
     <p>The adaptation table is queried to list countries with specific vulnerabilities (e.g., "Water scarcity") and their associated adaptation strategies.</p>
 
-    <h3>3. Climate Trends:</h3>
+<h3>3. Climate Trends:</h3>
     <p><strong>Objective:</strong> Count countries experiencing warming vs. cooling trends and identify countries with the most severe climate states.</p>
     <p><strong>Relationships:</strong> The climate table is used to determine climate trends and states for different countries.</p>
 
-    <h4>a. Warming vs. Cooling Trends:</h4>
+<h4>a. Warming vs. Cooling Trends:</h4>
     <p>The climate table is queried to count the number of countries experiencing warming and cooling trends.</p>
     <p>The WHERE clause filters the results based on the presence of the words "Warming" and "Cooling" in the Climate Trend column.</p>
 
     <h4>b. Countries with Severe Climate States:</h4>
     <p>The climate table is used to list countries with severe climate states, specifically those with the word "rainfall" in the Current Climate State column.</p>
 
-    <h3>5. Climate Projections</h3>
+<h3>5. Climate Projections</h3>
     <p><b>Objective:</b> Identify countries projected to experience the most drastic changes in the next 30 years and analyze trends in 5-year, 10-year, and 30-year projections.</p>
     <p><b>Relationships:</b> The climateprojections table provides projections for future climate changes in countries.</p>
     <ol type="a">
@@ -69,7 +69,7 @@
     <p><b>Objective:</b> Determine the dominant species in each country and the area they occupy.</p>
     <p><b>Relationships:</b> A spatial join is performed between the world and dominantspecies2 tables to determine the dominant species in each country.</p>
 
-    <h3>7. Vulnerabilities</h3>
+<h3>7. Vulnerabilities</h3>
     <p><b>Objective:</b> Identify countries projected to have significant future vulnerabilities and the recommended plant species for countries with high-risk vulnerabilities.</p>
     <p><b>Relationships:</b> The vulnerabilities table provides insights into future vulnerabilities and recommended plant species for different countries.</p>
     <ol type="a">
