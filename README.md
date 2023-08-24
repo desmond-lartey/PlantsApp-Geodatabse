@@ -73,17 +73,17 @@
         <li><b>Countries with Significant Future Vulnerabilities:</b> The vulnerabilities table is queried to identify countries projected to have significant future vulnerabilities.</li>
         <li><b>Recommended Plant Species for High-Risk Vulnerabilities:</b> The vulnerabilities table is used to determine the recommended plant species for countries with high-risk future vulnerabilities.</li>
 
-    <h2>Rationale for Joins:</h2>
+<h2>Rationale for Joins:</h2>
     <p>The spatial join between the world and dominantspecies2 tables is crucial to determine the dominant species in each country and the area they occupy. This join helps in understanding the distribution of species across countries.</p>
     <p>Other queries primarily use individual tables without joins, as the tables are structured to provide comprehensive data for specific analyses.</p>
 
-    <h2>Relationships:</h2>
+<h2>Relationships:</h2>
     <p>The primary key for linking most tables is the Country column. This column is present in almost all tables, making it the primary attribute for joining tables.</p>
     <p>The spatial relationship between the world and dominantspecies2 tables is based on the geometry of countries and the distribution of dominant species.</p>
 
-    <p>In essence, the SQL scripts are designed to extract specific insights from the database by querying individual tables or joining multiple tables based on the Country attribute or spatial relationships. The queries are tailored to answer specific information requests related to climate trends, adaptation strategies, budgeting, and dominant species distribution across countries.</p>
+<p>In essence, the SQL scripts are designed to extract specific insights from the database by querying individual tables or joining multiple tables based on the Country attribute or spatial relationships. The queries are tailored to answer specific information requests related to climate trends, adaptation strategies, budgeting, and dominant species distribution across countries.</p>
 
-    <h2>Conclusion:</h2>
+<h2>Conclusion:</h2>
     <p>The database provides a holistic view of climate trends, vulnerabilities, adaptation strategies, and budgeting across countries. By analyzing this data, stakeholders can make informed decisions about climate adaptation, budget allocation, and strategies to combat future vulnerabilities. The relationships between tables, especially the spatial relationship, offer a deeper understanding of the distribution of species and the impact of climate on various countries.</p>
 </body>
 
