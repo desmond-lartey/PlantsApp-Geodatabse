@@ -20,7 +20,6 @@
         <li><strong>vulnerabilities:</strong> Lists future vulnerabilities and recommended plant species for each country.</li>
         <li><strong>dominantspecies2:</strong> Contains polygon data indicating dominant species available in countries from a specific research.</li>
         <li><strong>world:</strong> Contains polygon data for countries.</li>
-    </ol>
 
     <h2>Analysis:</h2>
 
@@ -63,7 +62,6 @@
     
         <li><b>Countries with Drastic Changes in Next 30 Years:</b> The climateprojections table is queried to identify countries projected to experience drastic changes in the next 30 years.</li>
         <li><b>Trends in Projections:</b> The climateprojections table is used to analyze trends in the 5-year, 10-year, and 30-year projections.</li>
-    </ol>
 
 <h3>6. Dominant Species Analysis</h3>
     <p><b>Objective:</b> Determine the dominant species in each country and the area they occupy.</p>
@@ -72,10 +70,9 @@
 <h3>7. Vulnerabilities</h3>
     <p><b>Objective:</b> Identify countries projected to have significant future vulnerabilities and the recommended plant species for countries with high-risk vulnerabilities.</p>
     <p><b>Relationships:</b> The vulnerabilities table provides insights into future vulnerabilities and recommended plant species for different countries.</p>
-    <ol type="a">
+   
         <li><b>Countries with Significant Future Vulnerabilities:</b> The vulnerabilities table is queried to identify countries projected to have significant future vulnerabilities.</li>
         <li><b>Recommended Plant Species for High-Risk Vulnerabilities:</b> The vulnerabilities table is used to determine the recommended plant species for countries with high-risk future vulnerabilities.</li>
-    </ol>
 
     <h2>Rationale for Joins:</h2>
     <p>The spatial join between the world and dominantspecies2 tables is crucial to determine the dominant species in each country and the area they occupy. This join helps in understanding the distribution of species across countries.</p>
