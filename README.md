@@ -60,7 +60,7 @@
 <h3>5. Climate Projections</h3>
     <p><b>Objective:</b> Identify countries projected to experience the most drastic changes in the next 30 years and analyze trends in 5-year, 10-year, and 30-year projections.</p>
     <p><b>Relationships:</b> The climateprojections table provides projections for future climate changes in countries.</p>
-    <ol type="a">
+    
         <li><b>Countries with Drastic Changes in Next 30 Years:</b> The climateprojections table is queried to identify countries projected to experience drastic changes in the next 30 years.</li>
         <li><b>Trends in Projections:</b> The climateprojections table is used to analyze trends in the 5-year, 10-year, and 30-year projections.</li>
     </ol>
