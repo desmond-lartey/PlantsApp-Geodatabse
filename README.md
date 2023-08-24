@@ -32,7 +32,7 @@
     <p><strong>Objective:</strong> Determine countries with the highest and lowest estimated budgets for adaptation and identify the main climate vulnerabilities for countries with the top 5 highest budgets.</p>
      <p><strong>Objective:</strong> The budget table is self-sufficient for this analysis.</p>
 
-    <h4>a. Highest and Lowest Estimated Budgets:</h4>
+<h4>a. Highest and Lowest Estimated Budgets:</h4>
     <p>The budget table is queried to determine countries with the highest and lowest estimated budgets for adaptation.</p>
     <p>The ORDER BY clause sorts the results based on the Estimated_Budget column in descending and ascending order, respectively.</p>
 
@@ -43,7 +43,7 @@
     <p><strong>Objective:</strong> Identify the most commonly recommended plant species across countries and the adaptation strategies for countries with specific vulnerabilities.</p>
     <p><strong>Relationships:</strong> The adaptation table is used for this analysis. Multiple columns within the table are aggregated to determine the most common plant species.</p>
 
-    <h4>a. Most Commonly Recommended Plant Species:</h4>
+<h4>a. Most Commonly Recommended Plant Species:</h4>
     <p>The adaptation table is queried to determine the most commonly recommended plant species across countries.</p>
     <p>The GROUP BY clause groups the results by the OrnamentalPlantSpecies column, and the ORDER BY clause sorts the results based on the count of countries recommending each species.</p>
 
