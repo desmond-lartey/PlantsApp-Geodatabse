@@ -1,0 +1,65 @@
+---We will create 7 relations/tables from the climate analysis. Note that 2 more geographcial tables have been added. The PostGIS extension in QGIS made this easy and possible with a bunch of code
+CREATE TABLE budget (
+    Country VARCHAR(255),
+    Climate_Vulnerabilities TEXT,
+    urbangreen TEXT,
+    Estimated_Budget DECIMAL(20,2)
+);
+
+COPY budget FROM 'C:\PostgreSQL\12\scripts\budget.csv' DELIMITER ',' CSV HEADER;
+
+CREATE TABLE adaptation (
+    Country VARCHAR(255),
+    ClimateVulnerabilities TEXT,
+    strategies TEXT,
+    OrnamentalPlantSpecies TEXT,
+    OrnamentalPlantSpecies2 TEXT,
+    OrnamentalPlantSpecies3 TEXT,
+    OrnamentalPlantSpecies4 TEXT
+);
+
+COPY adaptation FROM 'C:\PostgreSQL\12\scripts\adaptation.csv' DELIMITER ',' CSV HEADER;
+
+CREATE TABLE climate (
+    id SERIAL PRIMARY KEY,
+    Country VARCHAR(255),
+    "Current Climate State" TEXT,
+    "Climate Trend" TEXT
+);
+
+COPY climate FROM 'C:\PostgreSQL\12\scripts\climate.csv' DELIMITER ',' CSV HEADER;
+
+CREATE TABLE climateclassification (
+    climateclassification_id SERIAL PRIMARY KEY,
+    Country VARCHAR(255),
+    "Winter Hardiness Zone" TEXT,
+    Temperature TEXT,
+    Classification TEXT,
+    "Suitable Plant Species" TEXT
+);
+COPY climateclassification FROM 'C:\PostgreSQL\12\scripts\climateclassification.csv' DELIMITER ',' CSV HEADER;
+
+CREATE TABLE climateprojections (
+    Country VARCHAR(255) PRIMARY KEY,
+    "5-Year Projection" TEXT,
+    "10-Year Projection" TEXT,
+    "15-Year Projection" TEXT,
+    "20-Year Projection" TEXT,
+    "30-Year Projection" TEXT
+);
+COPY climateprojections FROM 'C:\PostgreSQL\12\scripts\climateprojections.csv' DELIMITER ',' CSV HEADER;
+
+
+CREATE TABLE climatezone (
+    Country VARCHAR(255) PRIMARY KEY,
+    zone VARCHAR(255)
+);
+COPY climatezone FROM 'C:\PostgreSQL\12\scripts\climatezone.csv' DELIMITER ',' CSV HEADER;
+
+
+CREATE TABLE vulnerabilities (
+    Country VARCHAR(255) PRIMARY KEY,
+    futurevulnerabilities TEXT,
+    recommendedplantspecies TEXT
+);
+COPY vulnerabilities FROM 'C:\PostgreSQL\12\scripts\vulnerabilities.csv' DELIMITER ',' CSV HEADER;
