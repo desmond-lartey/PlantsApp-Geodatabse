@@ -33,30 +33,30 @@
      <p><strong>Objective:</strong> The budget table is self-sufficient for this analysis.</p>
 
 <h4>a. Highest and Lowest Estimated Budgets:</h4>
-    <p>The budget table is queried to determine countries with the highest and lowest estimated budgets for adaptation.</p>
-    <p>The ORDER BY clause sorts the results based on the Estimated_Budget column in descending and ascending order, respectively.</p>
+    <li><strong></strong>The budget table is queried to determine countries with the highest and lowest estimated budgets for adaptation. </li>
+    <li><strong></strong>The ORDER BY clause sorts the results based on the Estimated_Budget column in descending and ascending order, respectively. </li>
 
-    <h4>b. Main Climate Vulnerabilities for Top 5 Budgets:</h4>
-    <p>The budget table is again used to list the main climate vulnerabilities for countries with the top 5 highest estimated budgets.</p>
+<h4>b. Main Climate Vulnerabilities for Top 5 Budgets:</h4>
+    <li>Budget<strong></strong>The budget table is again used to list the main climate vulnerabilities for countries with the top 5 highest estimated budgets.</li>
 
 <h3>2. Adaptation Strategies:</h3>
     <p><strong>Objective:</strong> Identify the most commonly recommended plant species across countries and the adaptation strategies for countries with specific vulnerabilities.</p>
     <p><strong>Relationships:</strong> The adaptation table is used for this analysis. Multiple columns within the table are aggregated to determine the most common plant species.</p>
 
 <h4>a. Most Commonly Recommended Plant Species:</h4>
-    <p>The adaptation table is queried to determine the most commonly recommended plant species across countries.</p>
-    <p>The GROUP BY clause groups the results by the OrnamentalPlantSpecies column, and the ORDER BY clause sorts the results based on the count of countries recommending each species.</p>
+    <p><strong>Adaptation:</strong>The adaptation table is queried to determine the most commonly recommended plant species across countries.</p>
+    <p><strong>Relationships:</strong>The GROUP BY clause groups the results by the OrnamentalPlantSpecies column, and the ORDER BY clause sorts the results based on the count of countries recommending each species.</p>
 
-    <h4>b. Adaptation Strategies for Specific Vulnerabilities:</h4>
-    <p>The adaptation table is queried to list countries with specific vulnerabilities (e.g., "Water scarcity") and their associated adaptation strategies.</p>
+<h4>b. Adaptation Strategies for Specific Vulnerabilities:</h4>
+    <p><strong>AAdaptation:</strong>The adaptation table is queried to list countries with specific vulnerabilities (e.g., "Water scarcity") and their associated adaptation strategies.</p>
 
 <h3>3. Climate Trends:</h3>
     <p><strong>Objective:</strong> Count countries experiencing warming vs. cooling trends and identify countries with the most severe climate states.</p>
     <p><strong>Relationships:</strong> The climate table is used to determine climate trends and states for different countries.</p>
 
 <h4>a. Warming vs. Cooling Trends:</h4>
-    <p>The climate table is queried to count the number of countries experiencing warming and cooling trends.</p>
-    <p>The WHERE clause filters the results based on the presence of the words "Warming" and "Cooling" in the Climate Trend column.</p>
+    <p><strong>Climate:</strong>The climate table is queried to count the number of countries experiencing warming and cooling trends.</p>
+    <p><strong>Clause:</strong>The WHERE clause filters the results based on the presence of the words "Warming" and "Cooling" in the Climate Trend column.</p>
 
     <h4>b. Countries with Severe Climate States:</h4>
     <p>The climate table is used to list countries with severe climate states, specifically those with the word "rainfall" in the Current Climate State column.</p>
@@ -74,10 +74,9 @@
 
 <h3>7. Vulnerabilities</h3>
     <p><b>Objective:</b> Identify countries projected to have significant future vulnerabilities and the recommended plant species for countries with high-risk vulnerabilities.</p>
-    <p><b>Relationships:</b> The vulnerabilities table provides insights into future vulnerabilities and recommended plant species for different countries.</p>
-   
-    <li><b>Countries with Significant Future Vulnerabilities:</b> The vulnerabilities table is queried to identify countries projected to have significant future vulnerabilities.</li>
-    <li><b>Recommended Plant Species for High-Risk Vulnerabilities:</b> The vulnerabilities table is used to determine the recommended plant species for countries with high-risk future vulnerabilities.</li>
+    <li><strong></strong><b>Relationships:</b> The vulnerabilities table provides insights into future vulnerabilities and recommended plant species for different countries.</li>
+    <li><strong></strong><b>Vulnerabilities:</b> The vulnerabilities table is queried to identify countries projected to have significant future vulnerabilities.</li>
+    <li><strong></strong><b>Vulnerabilities:</b> The vulnerabilities table is used to determine the recommended plant species for countries with high-risk future vulnerabilities.</li>
 
 <h2>Rationale for Joins:</h2>
     <p>The spatial join between the world and dominantspecies2 tables is crucial to determine the dominant species in each country and the area they occupy. This join helps in understanding the distribution of species across countries.</p>
@@ -85,7 +84,7 @@
 
 <h2>Relationships:</h2>
 <li><strong>Key:</strong> The primary key for linking most tables is the Country column. This column is present in almost all tables, making it the primary attribute for joining tables.</li>
-        <li><strong>Relation:</strong> HThe spatial relationship between the world and dominantspecies2 tables is based on the geometry of countries and the distribution of dominant species.</li>
+        <li><strong>Relation:</strong> The spatial relationship between the world and dominantspecies2 tables is based on the geometry of countries and the distribution of dominant species.</li>
 
 
 <p>In essence, the SQL scripts are designed to extract specific insights from the database by querying individual tables or joining multiple tables based on the Country attribute or spatial relationships. The queries are tailored to answer specific information requests related to climate trends, adaptation strategies, budgeting, and dominant species distribution across countries.</p>
