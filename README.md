@@ -55,18 +55,38 @@
     <p><strong>Relationships:</strong> The climate table is used to determine climate trends and states for different countries.</p>
 
 <h4>a. Warming vs. Cooling Trends:</h4>
-    <p><strong>Climate:</strong>The climate table is queried to count the number of countries experiencing warming and cooling trends.</p>
-    <p><strong>Clause:</strong>The WHERE clause filters the results based on the presence of the words "Warming" and "Cooling" in the Climate Trend column.</p>
+<ul>
+    <li>
+        <strong>Climate:</strong> The climate table is queried to count the number of countries experiencing warming and cooling trends.
+    </li>
+    <li>
+        <strong>Clause:</strong> The WHERE clause filters the results based on the presence of the words "Warming" and "Cooling" in the Climate Trend column.
+    </li>
+</ul>
 
-    <h4>b. Countries with Severe Climate States:</h4>
-    <p>The climate table is used to list countries with severe climate states, specifically those with the word "rainfall" in the Current Climate State column.</p>
+<h4>b. Countries with Severe Climate States:</h4>
+<ul>
+    <li>
+        The climate table is used to list countries with severe climate states, specifically those with the word "rainfall" in the Current Climate State column.
+    </li>
+</ul>
 
 <h3>5. Climate Projections</h3>
-    <p><b>Objective:</b> Identify countries projected to experience the most drastic changes in the next 30 years and analyze trends in 5-year, 10-year, and 30-year projections.</p>
-    <p><b>Relationships:</b> The climateprojections table provides projections for future climate changes in countries.</p>
-    
-        <li><b>Countries with Drastic Changes in Next 30 Years:</b> The climateprojections table is queried to identify countries projected to experience drastic changes in the next 30 years.</li>
-        <li><b>Trends in Projections:</b> The climateprojections table is used to analyze trends in the 5-year, 10-year, and 30-year projections.</li>
+<ul>
+    <li>
+        <strong>Objective:</strong> Identify countries projected to experience the most drastic changes in the next 30 years and analyze trends in 5-year, 10-year, and 30-year projections.
+    </li>
+    <li>
+        <strong>Relationships:</strong> The climateprojections table provides projections for future climate changes in countries.
+    </li>
+    <li>
+        <strong>Countries with Drastic Changes in Next 30 Years:</strong> The climateprojections table is queried to identify countries projected to experience drastic changes in the next 30 years.
+    </li>
+    <li>
+        <strong>Trends in Projections:</strong> The climateprojections table is used to analyze trends in the 5-year, 10-year, and 30-year projections.
+    </li>
+</ul>
+
 
 <h3>6. Dominant Species Analysis</h3>
     <p><b>Objective:</b> Determine the dominant species in each country and the area they occupy.</p>
@@ -90,9 +110,9 @@
 <p>In essence, the SQL scripts are designed to extract specific insights from the database by querying individual tables or joining multiple tables based on the Country attribute or spatial relationships. The queries are tailored to answer specific information requests related to climate trends, adaptation strategies, budgeting, and dominant species distribution across countries.</p>
 
 <h2>Conclusion:</h2>
-    <p>The database provides a holistic view of climate trends, vulnerabilities, adaptation strategies, and budgeting across countries. By analyzing this data, stakeholders can make informed decisions about climate adaptation, budget allocation, and strategies to combat future vulnerabilities. The relationships between tables, especially the spatial relationship, offer a deeper understanding of the distribution of species and the impact of climate on various countries.</p>
+    <p>The database provides a holistic view of climate trends, vulnerabilities, adaptation strategies, and budgeting across countries. By analyzing this data, stakeholders can make informed decisions about climate adaptation, budget allocation, and strategies to combat future vulnerabilities. The relationships between tables, especially the spatial relationship, offer a deeper understanding of the distribution of species and the impact of climate on various countries. <a href="https://app-example-51f4402c9e250b7fc88fd87.streamlit.app/">VISIT THE GEODATABASE APP HERE</a></p>
 
-<p>If you want to know more about the functional and ornamental qualities for over 3000 plant species, <a href="https://plantsapp-ajjdvywmagmqbsty4f2r9c.streamlit.app/">visit PlantsApp</a>.</p>
+<p>If you want to know more about the functional and ornamental qualities for over 3000 plant species, <a href="https://plantsapp-ajjdvywmagmqbsty4f2r9c.streamlit.app/">VISIT PLANTAPP HERE</a>.</p>
 </body>
 
 </html>
